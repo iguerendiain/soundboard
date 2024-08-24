@@ -13,8 +13,8 @@ android {
         applicationId = "nacholab.soundboard"
         minSdk = 27
         targetSdk = 34
-        versionCode = 1
-        versionName = "20240824_1"
+        versionCode = 4
+        versionName = "20240824_4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
