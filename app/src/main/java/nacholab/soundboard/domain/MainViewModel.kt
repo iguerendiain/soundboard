@@ -22,7 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val mainRepository: MainRepository,
-    private val mediaPlayer: ExoPlayer
+    private val mediaPlayer: ExoPlayer?
 ): ViewModel() {
 
     private val _state = mutableStateOf(MainState())
@@ -31,7 +31,7 @@ class MainViewModel @Inject constructor(
     private var currentlyPlayingURL: String? = null
 
     init{
-        mediaPlayer.addListener(object: Player.Listener{
+        mediaPlayer?.addListener(object: Player.Listener{
 
             override fun onPlaybackStateChanged(playbackState: Int) {
                 super.onPlaybackStateChanged(playbackState)
@@ -207,21 +207,21 @@ class MainViewModel @Inject constructor(
             val url = audioClip.buildAudioURL()
 
             if (url == currentlyPlayingURL){
-                if (mediaPlayer.isPlaying) mediaPlayer.pause()
-                else mediaPlayer.play()
+                if (mediaPlayer?.isPlaying == true) mediaPlayer.pause()
+                else mediaPlayer?.play()
             }else{
                 currentlyPlayingURL = url
-                mediaPlayer.stop()
-                mediaPlayer.setMediaItem(MediaItem.fromUri(url))
-                mediaPlayer.prepare()
-                mediaPlayer.play()
+                mediaPlayer?.stop()
+                mediaPlayer?.setMediaItem(MediaItem.fromUri(url))
+                mediaPlayer?.prepare()
+                mediaPlayer?.play()
             }
         }
     }
 
     fun stopAudioClipPlayback(){
         viewModelScope.launch(Dispatchers.Main) {
-            mediaPlayer.stop()
+            mediaPlayer?.stop()
             currentlyPlayingURL = null
         }
     }
