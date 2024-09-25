@@ -14,7 +14,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import nacholab.soundboard.model.AudioClip
+import nacholab.android.errorhandling.domain.ErrorException
+import nacholab.android.errorhandling.domain.ErrorInfo
+import nacholab.android.errorhandling.domain.ErrorType
 import javax.inject.Inject
 
 @HiltViewModel
@@ -66,7 +68,7 @@ class MainViewModel @Inject constructor(
                     PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW,
                     PlaybackException.ERROR_CODE_FAILED_RUNTIME_CHECK,
                     PlaybackException.ERROR_CODE_IO_CLEARTEXT_NOT_PERMITTED ->
-                        ErrorInfo.UNKNOWN
+                        ErrorType.UNKNOWN
 
                     PlaybackException.ERROR_CODE_DISCONNECTED,
                     PlaybackException.ERROR_CODE_CONCURRENT_STREAM_LIMIT,
@@ -76,7 +78,7 @@ class MainViewModel @Inject constructor(
                     PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT,
                     PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
                     PlaybackException.ERROR_CODE_IO_FILE_NOT_FOUND ->
-                        ErrorInfo.NETWORK
+                        ErrorType.NETWORK
 
                     PlaybackException.ERROR_CODE_AUTHENTICATION_EXPIRED,
                     PlaybackException.ERROR_CODE_PREMIUM_ACCOUNT_REQUIRED,
@@ -97,7 +99,7 @@ class MainViewModel @Inject constructor(
                     PlaybackException.ERROR_CODE_END_OF_PLAYLIST,
                     PlaybackException.ERROR_CODE_CONTENT_ALREADY_PLAYING,
                     PlaybackException.ERROR_CODE_UNSPECIFIED ->
-                        ErrorInfo.UNKNOWN
+                        ErrorType.UNKNOWN
 
                     PlaybackException.ERROR_CODE_IO_UNSPECIFIED,
                     PlaybackException.ERROR_CODE_IO_INVALID_HTTP_CONTENT_TYPE,
@@ -115,9 +117,9 @@ class MainViewModel @Inject constructor(
                     PlaybackException.ERROR_CODE_AUDIO_TRACK_WRITE_FAILED,
                     PlaybackException.ERROR_CODE_AUDIO_TRACK_OFFLOAD_WRITE_FAILED,
                     PlaybackException.ERROR_CODE_AUDIO_TRACK_OFFLOAD_INIT_FAILED ->
-                        ErrorInfo.PARSE
+                        ErrorType.PARSE
 
-                    else -> ErrorInfo.UNKNOWN
+                    else -> ErrorType.UNKNOWN
                 }
 
                 _state.value = state.value.copy(
@@ -182,7 +184,7 @@ class MainViewModel @Inject constructor(
                 if (state.value.audioClips.isEmpty()) {
                     val apiErrorInfo = (downloadAudioClipsResult.exceptionOrNull() as ErrorException?)
                         ?.errorInfo
-                        ?: ErrorInfo(type = ErrorInfo.UNKNOWN)
+                        ?: ErrorInfo(type = ErrorType.UNKNOWN)
 
                     withContext(Dispatchers.Main) {
                         _state.value = state.value.copy(

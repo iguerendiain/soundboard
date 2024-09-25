@@ -103,4 +103,6 @@ dependencies {
     // Lottie
     implementation(libs.lottie.compose)
 
+    // Error handling
+    implementation(project(":errorhandling"))
 }

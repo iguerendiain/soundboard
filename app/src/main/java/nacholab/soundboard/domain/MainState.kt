@@ -1,6 +1,6 @@
 package nacholab.soundboard.domain
 
-import nacholab.soundboard.model.AudioClip
+import nacholab.android.errorhandling.domain.ErrorInfo
 
 data class MainState(
     val audioClips: List<AudioClip> = listOf(),

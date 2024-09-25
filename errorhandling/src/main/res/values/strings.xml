@@ -1,0 +1,9 @@
+<resources>
+    <string name="common_error_unknown_title">Unknown error</string>
+    <string name="common_error_serverresponse">Server response: (%d) %s</string>
+    <string name="common_error_network">There was a network error. Please make sure you have an active internet connection and try again.</string>
+    <string name="common_error_parse_title">Could not parse the server response</string>
+    <string name="common_error_empty">Empty server response. Try again later.</string>
+    <string name="common_gotit">Got it</string>
+    <string name="common_retry">Retry</string>
+</resources>

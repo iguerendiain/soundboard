@@ -7,11 +7,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import nacholab.android.errorhandling.ui.ErrorInfoDialog
 import nacholab.soundboard.R
 import nacholab.soundboard.domain.MainViewModel
-import nacholab.soundboard.ui.common.ErrorInfoDialog
 
 @Composable
 fun HomeScreen(mainViewModel: MainViewModel){

@@ -1,10 +1,11 @@
 package nacholab.soundboard.storage
 
-import nacholab.soundboard.domain.ErrorException
-import nacholab.soundboard.domain.ErrorInfo
+import nacholab.android.errorhandling.domain.ErrorException
+import nacholab.android.errorhandling.domain.ErrorInfo
+import nacholab.android.errorhandling.domain.ErrorType
 import nacholab.soundboard.api.MainAPI
 import nacholab.soundboard.domain.MainRepository
-import nacholab.soundboard.model.AudioClip
+import nacholab.soundboard.domain.AudioClip
 import java.io.IOException
 import java.lang.RuntimeException
 import javax.inject.Inject
@@ -22,13 +23,13 @@ class MainRepositoryImpl @Inject constructor(
                 val audioClips = audioClipsResponse.body()
                 if (audioClips != null) Result.success(audioClips)
                 else Result.failure(
-                    ErrorException(ErrorInfo(type = ErrorInfo.EMPTY))
+                    ErrorException(ErrorInfo(type = ErrorType.EMPTY))
                 )
             } else
                 Result.failure(
                     ErrorException(
                         ErrorInfo(
-                            type = ErrorInfo.UNKNOWN,
+                            type = ErrorType.UNKNOWN,
                             errorBody = audioClipsResponse.errorBody()?.string(),
                             statusCode = audioClipsResponse.code(),
                             exception = null
@@ -37,9 +38,9 @@ class MainRepositoryImpl @Inject constructor(
                 )
         }catch (e: Exception){
             val errorType = when (e) {
-                is IOException -> ErrorInfo.NETWORK
-                is RuntimeException -> ErrorInfo.PARSE
-                else -> ErrorInfo.UNKNOWN
+                is IOException -> ErrorType.NETWORK
+                is RuntimeException -> ErrorType.PARSE
+                else -> ErrorType.UNKNOWN
             }
 
             Result.failure(ErrorException(ErrorInfo(type = errorType, exception = e)))

@@ -17,7 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import nacholab.soundboard.BuildConfig
 import nacholab.soundboard.domain.MainState
-import nacholab.soundboard.model.AudioClip
+import nacholab.soundboard.domain.AudioClip
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

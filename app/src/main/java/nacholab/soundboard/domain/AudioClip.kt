@@ -1,4 +1,4 @@
-package nacholab.soundboard.model
+package nacholab.soundboard.domain
 
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale

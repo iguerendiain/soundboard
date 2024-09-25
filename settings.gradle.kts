@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "NachoLab's SoundBoard"
 include(":app")
+include(":errorhandling")
