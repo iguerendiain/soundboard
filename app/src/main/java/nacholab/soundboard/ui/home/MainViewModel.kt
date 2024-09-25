@@ -1,4 +1,4 @@
-package nacholab.soundboard.domain
+package nacholab.soundboard.ui.home
 
 import androidx.annotation.OptIn
 import androidx.compose.runtime.State
@@ -17,6 +17,9 @@ import kotlinx.coroutines.withContext
 import nacholab.android.errorhandling.domain.ErrorException
 import nacholab.android.errorhandling.domain.ErrorInfo
 import nacholab.android.errorhandling.domain.ErrorType
+import nacholab.soundboard.domain.AudioClip
+import nacholab.soundboard.domain.MainRepository
+import nacholab.soundboard.domain.MainState
 import javax.inject.Inject
 
 @HiltViewModel

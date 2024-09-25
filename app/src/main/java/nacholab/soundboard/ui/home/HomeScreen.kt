@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import nacholab.android.errorhandling.ui.ErrorInfoDialog
 import nacholab.soundboard.R
-import nacholab.soundboard.domain.MainViewModel
 
 @Composable
 fun HomeScreen(mainViewModel: MainViewModel){

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import nacholab.soundboard.domain.MainViewModel
+import nacholab.soundboard.ui.home.MainViewModel
 import nacholab.soundboard.ui.home.HomeScreen
 import nacholab.soundboard.ui.theme.NachoLabsSoundBoardTheme
 

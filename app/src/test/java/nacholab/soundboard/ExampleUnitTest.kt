@@ -5,7 +5,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import nacholab.soundboard.domain.AudioClip
-import nacholab.soundboard.domain.MainViewModel
+import nacholab.soundboard.ui.home.MainViewModel
 import org.junit.Rule
 import org.junit.Test
 
