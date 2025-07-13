@@ -1,7 +1,6 @@
 package nacholab.soundboard.di
 
 import android.app.Application
-import com.facebook.flipper.plugins.network.FlipperOkhttpInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,12 +18,8 @@ object APIModule {
 
     @Provides
     @Singleton
-    fun provideMainApi(
-        app: Application,
-        flipperInterceptor: FlipperOkhttpInterceptor?
-    ): MainAPI {
+    fun provideMainApi(app: Application): MainAPI {
         val interceptors = mutableListOf<Interceptor>()
-        flipperInterceptor?.let { interceptors.add(it) }
         if (BuildConfig.DEBUG)
             interceptors.add(HttpLoggingInterceptor())
 

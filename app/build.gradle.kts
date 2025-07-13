@@ -2,19 +2,21 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    alias(libs.plugins.kotlinCompose)
 }
 
 android {
     namespace = "nacholab.soundboard"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "nacholab.soundboard"
-        minSdk = 27
-        targetSdk = 34
+        minSdk = 30
+        targetSdk = 36
         versionCode = 4
-        versionName = "20240824_4"
+        versionName = "20250713"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -39,18 +41,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -96,14 +92,9 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
 
-    // Flipper
-    implementation(libs.soloader)
-    implementation(libs.flipper)
-    implementation(libs.flipper.network.plugin)
-
     // Room
     implementation(libs.room.runtime)
-    kapt(libs.room.compiler)
+    ksp(libs.room.compiler)
     implementation(libs.room.ktx)
 
     // Media3
