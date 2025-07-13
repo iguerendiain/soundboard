@@ -3,6 +3,7 @@ package nacholab.soundboard
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import nacholab.soundboard.ui.home.MainViewModel
@@ -20,9 +21,8 @@ class MainActivity : ComponentActivity() {
         mainViewModel.refreshAudioclips()
 
         setContent {
-            NachoLabsSoundBoardTheme {
-                HomeScreen(mainViewModel)
-            }
+            enableEdgeToEdge()
+            NachoLabsSoundBoardTheme { HomeScreen(mainViewModel) }
         }
     }
 

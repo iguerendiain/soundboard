@@ -2,7 +2,12 @@ package nacholab.soundboard.ui.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.union
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.icons.Icons
@@ -22,7 +27,7 @@ import nacholab.soundboard.domain.AudioClip
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AudioClipList(
-    modifier: Modifier = Modifier.fillMaxSize(),
+    modifier: Modifier = Modifier,
     loadingState: Int,
     audioClips: List<AudioClip>,
     selectedAudioClip: AudioClip?,
@@ -36,7 +41,11 @@ fun AudioClipList(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = modifier
+        modifier = modifier.windowInsetsPadding(
+            WindowInsets
+                .systemBars
+                .union(WindowInsets.ime)
+        )
     ) {
         if (BuildConfig.DEBUG) IconButton(onClick = onClearDBRequested) {
             Icon(
